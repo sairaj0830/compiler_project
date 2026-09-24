@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Compiler</title>
+    <!-- Monaco Editor CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/editor/editor.main.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Intelligent Multi-Phase Compiler</h1>
+        <div class="header-actions">
+            <label><input type="checkbox" id="optimize-toggle"> Enable Optimization</label>
+            <button id="compile-btn">Compile & Run</button>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Left Panel: Editor -->
+        <div class="panel editor-panel">
+            <h2>Source Code (MiniC)</h2>
+            <div id="editor-container"></div>
+        </div>
+
+        <!-- Right Panel: Compiler Phases -->
+        <div class="panel visualization-panel">
+            <div class="tabs">
+                <button class="tab active" data-target="tokens">Tokens</button>
+                <button class="tab" data-target="ir">IR (TAC)</button>
+                <button class="tab" data-target="assembly">Assembly</button>
+            </div>
+            
+            <div class="tab-content">
+                <div id="tokens" class="content active">
+                    <table id="tokens-table">
+                        <thead><tr><th>Type</th><th>Value</th><th>Line</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div id="ir" class="content" style="display:none;">
+                    <h3>Unoptimized TAC</h3>
+                    <pre id="ir-unopt-output"></pre>
+                    <h3>Optimized TAC</h3>
+                    <pre id="ir-opt-output"></pre>
+                </div>
+                <div id="assembly" class="content" style="display:none;">
+                    <pre id="assembly-output"></pre>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bottom-panel">
+        <div class="output-section">
+            <h3>VM Output</h3>
+            <pre id="vm-output"></pre>
+        </div>
+        <div class="ai-section">
+            <h3>Intelligent Assistant</h3>
+            <div id="ai-output" class="ai-box">Waiting for compilation...</div>
+        </div>
+    </footer>
+
+    <!-- Monaco Editor JS -->
+    <script>var require = { paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs' } };</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/editor/editor.main.nls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/editor/editor.main.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
